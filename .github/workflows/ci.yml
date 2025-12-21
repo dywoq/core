@@ -18,7 +18,14 @@ jobs:
       - name: Install tools
         run: |
           sudo apt update
-          sudo apt install -y cmake g++ build-essential
+          sudo apt install -y cmake g++ build-essential curl unzip
+
+      - name: Setup test framework
+        run: |
+          curl -L -o dywoqtest.zip https://github.com/dywoq/tests/releases/download/v1.1.0/dywoqtest-1.1.0.zip
+          unzip dywoqtest.zip -d dywoqtest
+          sudo cp -r dywoqtest/include/* /usr/include/
+          rm -rf dywoqtest dywoqtest.zip
 
       - name: Build
         run: |
