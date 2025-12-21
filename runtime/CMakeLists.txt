@@ -4,3 +4,4 @@ project(dywoqstl_runtime)
 file(GLOB_RECURSE SOURCES src/*.cxx src/**/*.cxx)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
+add_executable(dywoqstl_lib_tests tests/main.cxx)
