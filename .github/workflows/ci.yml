@@ -21,15 +21,31 @@ jobs:
       - name: Configure
         run: cmake -S . -B build
 
-      - name: Build
+      - name: Build (Release)
         run: cmake --build build --config Release
 
-      - name: Run tests
+      - name: Run tests (Release)
         run: |
           cd build/lib
-          ./dywoqstl_lib_tests
+          ./dywoqcxx_lib_tests
           cd ../runtime
-          ./dywoqstl_runtime_tests
+          ./dywoqcxx_runtime_tests
           cd ../core
-          ./dywoqstl_core_tests
+          ./dywoqcxx_core_tests
+        shell: bash
+
+      - name: Build (Debug)
+        run: |
+          cd ../../
+          rm build -fr
+          cmake --build build --config Debug
+
+      - name: Run tests (Release)
+        run: |
+          cd build/lib
+          ./dywoqcxx_lib_tests
+          cd ../runtime
+          ./dywoqcxx_runtime_tests
+          cd ../core
+          ./dywoqcxx_core_tests
         shell: bash
