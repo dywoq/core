@@ -36,7 +36,6 @@ jobs:
 
       - name: Build (Debug)
         run: |
-          cd ../../
           rm build -fr
           cmake --build build --config Debug
 
