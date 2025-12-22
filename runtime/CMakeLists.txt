@@ -24,13 +24,10 @@ file(GLOB_RECURSE SOURCES src/*.cxx src/**/*.cxx)
 # dywoqstl_runtime
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 target_compile_options(${PROJECT_NAME} PRIVATE
-    # MSVC (Windows)
-    $<$<CXX_COMPILER_ID:MSVC>:/EH /GR->
-    # GNU, Clang
-    $<$<CXX_COMPILER_ID:GNU,Clang>:-fno-exceptions -fno-rtti>
+    -fno-exceptions -fno-rtti
 )
 target_link_options(${PROJECT_NAME} PRIVATE
-    $<$<CXX_COMPILER_ID:GNU,Clang>:-nostdlib++>
+    -nostdlib++
 )
 
 # Tests executable
