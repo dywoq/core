@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28.3)
-project(dywoqcxxstd_lib)
+project(dywoqcxx_lib)
 
 # ================================
 #         Configuration
@@ -21,7 +21,7 @@ file(GLOB_RECURSE SOURCES src/*.cxx src/**/*.cxx)
 #           Building
 # ================================
 
-# dywoqstl_lib
+# dywoqcxx_lib
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 target_compile_options(${PROJECT_NAME} PRIVATE
     -fno-exceptions -fno-rtti
