@@ -18,15 +18,16 @@ jobs:
           sudo apt update
           sudo apt install -y cmake g++ build-essential
 
-      - name: Configure
-        run: cmake -S . -B build
-
-      - name: Build (Release)
-        run: cmake --build build --config Release
-
-      - name: Run tests (Release)
+      - name: Build (Release and Debug)
         run: |
-          cd build/lib
+          cmake . -B build-release -DCMAKE_BUILD_TYPE=Release
+          cmake . -B build-debug -DCMAKE_BUILD_TYPE=Debug
+          cmake --build build-release
+          cmake --build build-debug
+
+      - name: Run tests (Debug)
+        run: |
+          cd build-debug/lib
           ./dywoqcxx_lib_tests
           cd ../runtime
           ./dywoqcxx_runtime_tests
@@ -34,13 +35,9 @@ jobs:
           ./dywoqcxx_core_tests
         shell: bash
 
-      - name: Build (Debug)
+      - name: Run tests (Release)
         run: |
-          cmake --build build --config Debug
-
-      - name: Run tests (Debug)
-        run: |
-          cd build/lib
+          cd build-release/lib
           ./dywoqcxx_lib_tests
           cd ../runtime
           ./dywoqcxx_runtime_tests
