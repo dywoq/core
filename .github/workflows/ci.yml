@@ -37,7 +37,9 @@ jobs:
           find . -type f \( -name '*.cxx' -o -name '*.hxx' \) -print0 | xargs -0 clang-format --dry-run --Werror
 
   build-and-test:
-    needs: format-check
+    needs:
+      - format-check
+      - static-analysis
     runs-on: ubuntu-latest
 
     steps:
