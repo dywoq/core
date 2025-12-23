@@ -7,6 +7,21 @@ on:
     branches: [main]
 
 jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install
+        run: |
+          sudo apt update
+          sudo apt install clang-tidy
+
+      - name: Run clang-tidy
+        run: |
+          cmake . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          clang-tidy $(find . -name '*.cxx' -name '*.hxx') --warnings-as-errors=*
+
   format-check:
     runs-on: ubuntu-latest
     steps:
@@ -41,20 +56,14 @@ jobs:
 
       - name: Run tests (Debug)
         run: |
-          cd build-debug/lib
-          ./dywoqcxx_lib_tests
-          cd ../runtime
-          ./dywoqcxx_runtime_tests
-          cd ../core
-          ./dywoqcxx_core_tests
+          ./build-debug/lib/dywoqcxx_lib_tests
+          ./build-debug/runtime/dywoqcxx_runtime_tests
+          ./build-debug/core/dywoqcxx_core_tests
         shell: bash
 
       - name: Run tests (Release)
         run: |
-          cd build-release/lib
-          ./dywoqcxx_lib_tests
-          cd ../runtime
-          ./dywoqcxx_runtime_tests
-          cd ../core
-          ./dywoqcxx_core_tests
+          ./build-release/lib/dywoqcxx_lib_tests
+          ./build-release/runtime/dywoqcxx_runtime_tests
+          ./build-release/core/dywoqcxx_core_tests
         shell: bash
