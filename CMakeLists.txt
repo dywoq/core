@@ -18,7 +18,7 @@ file(GLOB_RECURSE LIB_SOURCES src/lib/**/*.cxx src/lib/*.cxx)
 
 # Binary
 add_library(${PROJECT_NAME} STATIC ${CORE_SOURCES} ${RUNTIME_SOURCES} ${LIB_SOURCES})
-target_include_directories(${PROJECT_NAME} PUBLIC include/)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/)
 target_compile_options(${PROJECT_NAME} PRIVATE -fno-exceptions -fno-rtti)
 
 # Tests
