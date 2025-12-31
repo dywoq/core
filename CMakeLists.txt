@@ -14,12 +14,10 @@ file(GLOB_RECURSE CORE_SOURCES src/core/**/*.cxx src/runtime/*.cxx)
 file(GLOB_RECURSE RUNTIME_SOURCES src/runtime/**/*.cxx src/runtime/*.cxx)
 file(GLOB_RECURSE LIB_SOURCES src/lib/**/*.cxx src/lib/*.cxx)
 
-file(GLOB_RECURSE HEADERS include/dywoq/cxx/*.hxx include/dywoq/cxx/**/*.hxx)
-
 # Building
 
 # Binary
-add_library(${PROJECT_NAME} STATIC ${CORE_SOURCES} ${RUNTIME_SOURCES} ${LIB_SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} STATIC ${CORE_SOURCES} ${RUNTIME_SOURCES} ${LIB_SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC include/)
 target_compile_options(${PROJECT_NAME} PRIVATE -fno-exceptions -fno-rtti)
 
