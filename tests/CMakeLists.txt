@@ -21,9 +21,9 @@ file(GLOB_RECURSE TEST_CORE_SOURCES core/*.cxx core/**/*.cxx)
 
 # Add tests
 function(add_test_exe name)
-    add_executable(${name} ${ARGN})
-    target_link_libraries(${name} PRIVATE dywoqcxx GTest::gtest GTest::gtest_main)
-    gtest_discover_tests(${name})
+  add_executable(${name} ${ARGN})
+  target_link_libraries(${name} PRIVATE dywoqcxx GTest::gtest GTest::gtest_main)
+  gtest_discover_tests(${name})
 endfunction()
 
 add_test_exe(tests_runtime ${TEST_RUNTIME_SOURCES})
