@@ -22,6 +22,9 @@ file(GLOB_RECURSE TEST_CORE_SOURCES core/*.cxx core/**/*.cxx)
 # Add tests
 function(add_test_exe name)
   add_executable(${name} ${ARGN})
+  set_target_properties(${name} PROPERTIES
+    CXX_STANDARD 20
+  )
   target_link_libraries(${name} PRIVATE dywoqcxx GTest::gtest GTest::gtest_main)
   gtest_discover_tests(${name})
 endfunction()

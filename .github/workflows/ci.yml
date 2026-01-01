@@ -19,7 +19,7 @@ jobs:
 
       - name: Run clang-tidy
         run: |
-          cmake . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          cmake . -B build-tidy
           find . -type f \( -name '*.cxx' -o -name '*.hxx' \) -print0 | xargs -0 clang-tidy --warnings-as-errors=* -p build-tidy/
 
   format-check:

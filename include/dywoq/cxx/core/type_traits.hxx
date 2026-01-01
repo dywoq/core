@@ -13,7 +13,7 @@
 #include "../__config.hxx"
 
 #if _DYWOQ_CXX__VERSION_SUPPORTED
-
+#include "type_traits/satisfied.hxx"
 #endif
 
 #endif
