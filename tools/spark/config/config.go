@@ -6,8 +6,9 @@ import (
 )
 
 type Config struct {
-	Compiler   string `json:"compiler"`
-	Categories string `json:"categories"`
+	Compiler           string `json:"compiler"`
+	Categories         string `json:"categories"`
+	IncludeDirectories string `json:"include_directories"`
 }
 
 // WithReader decodes bytes from r into Config structure.
