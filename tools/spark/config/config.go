@@ -6,8 +6,8 @@ import (
 )
 
 type Config struct {
-	// Compiler is C++ compiler for test files.
-	Compiler string `json:"compiler"`
+	Compiler   string `json:"compiler"`
+	Categories string `json:"categories"`
 }
 
 // WithReader decodes bytes from r into Config structure.
