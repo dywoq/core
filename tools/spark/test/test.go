@@ -18,6 +18,17 @@ type Test struct {
 	Type            Type     `json:"type"`
 }
 
+const (
+	StandardCxx20 Standard = "cxx20"
+)
+
+const (
+	TypeCompilePass Type = "compile-pass"
+	TypeCompileFail Type = "compile-fail"
+	TypePass        Type = "pass"
+	TypeFail        Type = "fail"
+)
+
 // WithReader populates the Test by decoding JSON data from r.
 // It expects r to contain a valid JSON object matching the Test schema.
 // Any existing fields in the Test may be overwritten.
@@ -37,14 +48,3 @@ func (t *Test) WithFilepath(path string) error {
 	defer f.Close()
 	return t.WithReader(f)
 }
-
-const (
-	StandardCxx20 Standard = "cxx20"
-)
-
-const (
-	TypeCompilePass Type = "compile-pass"
-	TypeCompileFail Type = "compile-fail"
-	TypePass        Type = "pass"
-	TypeFail        Type = "fail"
-)
