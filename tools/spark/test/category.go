@@ -1,7 +1,7 @@
 package test
 
 type Category struct {
-	Name       string   `json:"name"`
-	TestFiles  []string `json:"test_files"`
-	Categories string   `json:"categories"`
+	Name       string `json:"name"`
+	Root       string `json:"root"`
+	Categories string `json:"categories"`
 }

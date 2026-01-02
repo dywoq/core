@@ -12,7 +12,6 @@ type Type string
 
 type Test struct {
 	Name            string   `json:"name"`
-	Path            string   `json:"path"`
 	Standard        Standard `json:"standard"`
 	AdditionalFlags []string `json:"additional_flags"`
 	Type            Type     `json:"type"`
